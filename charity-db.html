@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Database Charity</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .schema-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .table {
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 250px;
+        position: relative;
+      }
+
+      .table h2 {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      .table .pk {
+        font-weight: bold;
+        color: #ff4500;
+      }
+
+      .table .fk {
+        font-weight: bold;
+        color: #4682b4;
+      }
+
+      .table p {
+        margin: 5px 0;
+      }
+
+      .line {
+        border-left: 2px dashed #aaa;
+        height: 50px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: -1;
+      }
+
+      .line-horizontal {
+        border-top: 2px dashed #aaa;
+        width: 50px;
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        transform: translateY(-50%);
+        z-index: -1;
+      }
+
+      .line-left {
+        left: -30px;
+      }
+
+      .line-right {
+        right: -30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="schema-container">
+      <!-- User Table -->
+      <div class="table">
+        <h2>user</h2>
+        <p><span class="pk">PK</span> id (int)</p>
+        <p>address (varchar 255)</p>
+        <p>email (varchar 255)</p>
+        <p>full_name (varchar 255)</p>
+        <p>note (varchar 255)</p>
+        <p>password (varchar 128)</p>
+        <p>phone_number (varchar 255)</p>
+        <p>status (int)</p>
+        <p>user_name (varchar 255)</p>
+        <p>created (varchar 255)</p>
+        <p><span class="fk">FK</span> role_id (int)</p>
+      </div>
+
+      <!-- Relationship Line -->
+      <div class="line line-horizontal"></div>
+
+      <!-- Role Table -->
+      <div class="table">
+        <h2>role</h2>
+        <p><span class="pk">PK</span> id (int)</p>
+        <p>role_name (varchar 255)</p>
+      </div>
+    </div>
+
+    <div class="schema-container">
+      <!-- User_Donation Table -->
+      <div class="table">
+        <h2>user_donation</h2>
+        <p><span class="pk">PK</span> id (int)</p>
+        <p>created (varchar 255)</p>
+        <p>money (int)</p>
+        <p>name (varchar 255)</p>
+        <p>status (int)</p>
+        <p>text (varchar 255)</p>
+        <p><span class="fk">FK</span> donation_id (int)</p>
+        <p><span class="fk">FK</span> user_id (int)</p>
+      </div>
+
+      <!-- Relationship Line -->
+      <div class="line line-horizontal"></div>
+
+      <!-- Donation Table -->
+      <div class="table">
+        <h2>donation</h2>
+        <p><span class="pk">PK</span> id (int)</p>
+        <p>code (varchar 255)</p>
+        <p>created (varchar 255)</p>
+        <p>description (varchar 255)</p>
+        <p>end_date (varchar 255)</p>
+        <p>money (int)</p>
+        <p>name (varchar 255)</p>
+        <p>organization_name (varchar 255)</p>
+        <p>phone_number (varchar 255)</p>
+        <p>start_date (varchar 255)</p>
+        <p>status (int)</p>
+      </div>
+    </div>
+  </body>
+</html>

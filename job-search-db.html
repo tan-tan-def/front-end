@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Database Schema</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 60px;
+      }
+
+      .table {
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 250px;
+        position: relative;
+        text-align: center;
+      }
+
+      .table h2 {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      .table .pk {
+        font-weight: bold;
+        color: #ff4500;
+      }
+
+      .table .fk {
+        font-weight: bold;
+        color: #4682b4;
+      }
+
+      .table p {
+        margin: 5px 0;
+      }
+
+      .arrow {
+        width: 50px;
+        height: 2px;
+        background-color: #000;
+        position: absolute;
+      }
+
+      .arrow-right {
+        top: 50%;
+        right: -60px;
+        transform: translateY(-50%);
+        width: 60px;
+      }
+
+      .arrow-right::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 50%;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        border-left: 10px solid #000;
+        transform: translateY(-50%);
+      }
+
+      .arrow-down {
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 40px;
+      }
+
+      .arrow-down::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 10px solid #000;
+        transform: translateX(-50%);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- CV Table -->
+    <div class="table">
+      <h2>cv</h2>
+      <p><span class="pk">PK</span> id (int)</p>
+      <p>file_name (varchar 255)</p>
+      <p><span class="fk">FK</span> user_id (int)</p>
+    </div>
+
+    <!-- Save Job Table -->
+    <div class="table">
+      <h2>save_job</h2>
+      <p><span class="pk">PK</span> id (int)</p>
+      <p>recruitment_id (int)</p>
+      <p><span class="fk">FK</span> user_id (int)</p>
+    </div>
+
+    <!-- Follow Company Table -->
+    <div class="table">
+      <h2>follow_company</h2>
+      <p><span class="pk">PK</span> id (int)</p>
+      <p>company_id (int)</p>
+      <p><span class="fk">FK</span> user_id (int)</p>
+    </div>
+
+    <!-- Applypost Table -->
+    <div class="table">
+      <h2>applypost</h2>
+      <p><span class="pk">PK</span> id (int)</p>
+      <p>created_at (varchar 255)</p>
+      <p>recruitment_id (int)</p>
+      <p><span class="fk">FK</span> user_id (int)</p>
+      <p>name_cv (varchar 255)</p>
+      <p>status (int)</p>
+      <p>text (varchar 255)</p>
+    </div>
+
+    <!-- Company Table -->
+    <div class="table">
+      <h2>company</h2>
+      <p><span class="pk">PK</span> id (int)</p>
+      <p>address (varchar 255)</p>
+      <p>description (text)</p>
+      <p>email (varchar 255)</p>
+      <p>logo (varchar 255)</p>
+      <p>name_company (varchar 255)</p>
+      <p>phone_number (varchar 255)</p>
+      <p>status (int)</p>
+      <p><span class="fk">FK</span> user_id (int)</p>
+    </div>
+
+    <!-- User Table -->
+    <div class="table">
+      <h2>user</h2>
+      <p><span class="pk">PK</span> id (int)</p>
+      <p>address (varchar 255)</p>
+      <p>description (varchar 255)</p>
+      <p>email (varchar 255)</p>
+      <p>full_name (varchar 255)</p>
+      <p>image (varchar 255)</p>
+      <p>password (varchar 128)</p>
+      <p>phone_number (varchar 255)</p>
+      <p>status (int)</p>
+      <p><span class="fk">FK</span> role_id (int)</p>
+      <p><span class="fk">FK</span> cv_id (int)</p>
+    </div>
+
+    <!-- Recruitment Table -->
+    <div class="table">
+      <h2>recruitment</h2>
+      <p><span class="pk">PK</span> id (int)</p>
+      <p>address (varchar 255)</p>
+      <p>created_at (varchar 255)</p>
+      <p>description (varchar 255)</p>
+      <p>experience (varchar 255)</p>
+      <p>quantity (int)</p>
+      <p>rank (varchar 255)</p>
+      <p>salary (varchar 255)</p>
+      <p>status (int)</p>
+      <p>title (varchar 255)</p>
+      <p>type (varchar 255)</p>
+      <p>view (int)</p>
+      <p><span class="fk">FK</span> category_id (int)</p>
+      <p><span class="fk">FK</span> company_id (int)</p>
+      <p>deadline (varchar 255)</p>
+    </div>
+
+    <!-- Category Table -->
+    <div class="table">
+      <h2>category</h2>
+      <p><span class="pk">PK</span> id (int)</p>
+      <p>name (varchar 255)</p>
+      <p>number_choose (int)</p>
+    </div>
+
+    <!-- Role Table -->
+    <div class="table">
+      <h2>role</h2>
+      <p><span class="pk">PK</span> id (int)</p>
+      <p>role_name (varchar 255)</p>
+    </div>
+
+    <!-- UserRole Table -->
+    <div class="table">
+      <h2>user_role</h2>
+      <p><span class="pk">PK</span> id (int)</p>
+      <p><span class="fk">FK</span> user_id (int)</p>
+      <p><span class="fk">FK</span> role_id (int)</p>
+    </div>
+  </body>
+</html>
